@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/ibm-plex-sans-400.woff2') format('woff2');}
+@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:500;font-display:swap;src:url('assets/fonts/ibm-plex-sans-500.woff2') format('woff2');}
+@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:600;font-display:swap;src:url('assets/fonts/ibm-plex-sans-600.woff2') format('woff2');}
+@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/ibm-plex-sans-700.woff2') format('woff2');}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;font-family:'IBM Plex Sans',sans-serif;color:#0A0009;background:#FFFFFF;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+h1,h2,h3,h4,h5,h6{margin:0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:600;line-height:1.03;letter-spacing:-0.015em;}
+p{margin:0;}
+img{display:block;max-width:100%;}
+a{color:#003EC5;text-decoration:none;}
+a:hover{color:#00319D;}
+button{font-family:inherit;cursor:pointer;}
+::selection{background:#003EC5;color:#fff;}
+@keyframes lc-pulse{0%,100%{opacity:.35;transform:scale(1);}50%{opacity:.9;transform:scale(1.35);}}
+@keyframes lc-shine{0%{transform:translateX(-130%) skewX(-18deg);}55%,100%{transform:translateX(340%) skewX(-18deg);}}
+@keyframes lc-drift{0%,100%{transform:translate3d(0,0,0) scale(1);}50%{transform:translate3d(3%,-4%,0) scale(1.09);}}
+@keyframes lc-ribbon{from{transform:translate3d(0,0,0);}to{transform:translate3d(-50%,0,0);}}
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="position:relative;overflow-x:hidden;background:#FCFDFF;">
+
+<div aria-hidden="true" style="position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,#EFF5FF 0%,#F8FAFF 34%,#FCFDFF 70%,#F6F9FF 100%);"></div>
+  <div data-aurora="1" style="position:absolute;left:-10%;top:-14%;width:58vw;height:58vw;border-radius:50%;background:radial-gradient(circle,rgba(0,62,197,0.16) 0%,rgba(0,62,197,0) 64%);filter:blur(34px);animation:lc-drift 21s ease-in-out infinite;"></div>
+  <div data-aurora="2" style="position:absolute;right:-14%;top:22%;width:52vw;height:52vw;border-radius:50%;background:radial-gradient(circle,rgba(100,164,255,0.20) 0%,rgba(100,164,255,0) 66%);filter:blur(30px);animation:lc-drift 27s ease-in-out infinite reverse;"></div>
+  <div data-aurora="3" style="position:absolute;left:18%;bottom:-18%;width:46vw;height:46vw;border-radius:50%;background:radial-gradient(circle,rgba(146,191,255,0.24) 0%,rgba(146,191,255,0) 68%);filter:blur(28px);animation:lc-drift 33s ease-in-out infinite;"></div>
+  <div data-cursor-glow style="position:absolute;left:0;top:0;width:38vw;height:38vw;margin:-19vw 0 0 -19vw;border-radius:50%;background:radial-gradient(circle,rgba(0,62,197,0.10) 0%,rgba(0,62,197,0) 62%);filter:blur(26px);opacity:0;transition:opacity .6s ease;will-change:transform;"></div>
+  <div style="position:absolute;inset:0;opacity:0.55;background-image:linear-gradient(rgba(0,62,197,0.055) 1px,transparent 1px),linear-gradient(90deg,rgba(0,62,197,0.055) 1px,transparent 1px);background-size:112px 112px;mask-image:radial-gradient(120% 100% at 50% 0%,#000 30%,transparent 78%);-webkit-mask-image:radial-gradient(120% 100% at 50% 0%,#000 30%,transparent 78%);"></div>
+  <div style="position:absolute;inset:0;opacity:0.030;mix-blend-mode:multiply;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23g)'/%3E%3C/svg%3E&quot;);"></div>
+</div>
+
+<div style="position:relative;z-index:3;">
+<dc-import name="Navbar" active="partners" hint-size="100%,74px"></dc-import>
+</div>
+
+<section style="position:relative;z-index:2;padding:9rem 5% 0;">
+
+  <div style="position:relative;max-width:1280px;margin:0 auto;">
+    <div data-hero-grid style="display:grid;grid-template-columns:1fr;gap:3rem;align-items:end;">
+      <div>
+        <div data-hero-tag style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1rem;margin-bottom:1.5rem;border:1.5px solid rgba(0,62,197,0.20);border-radius:999px;background:rgba(255,255,255,0.76);backdrop-filter:blur(12px) saturate(1.4);-webkit-backdrop-filter:blur(10px);box-shadow:0 4px 14px -8px rgba(0,62,197,0.35);">
+          <span aria-hidden="true" style="display:block;width:7px;height:7px;border-radius:50%;background:#003EC5;box-shadow:0 0 10px rgba(0,62,197,0.8);animation:lc-pulse 2.6s ease-in-out infinite;"></span>
+          <span data-i18n="h_eyebrow" style="font-size:.8125rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#003EC5;">Un réseau mondial</span>
+        </div>
+        <h1 data-hero-title data-h="h1" style="font-size:clamp(2.5rem,5.8vw,5.625rem);text-transform:uppercase;line-height:0.95;max-width:17ch;">Nos <span style="background:linear-gradient(100deg,#003EC5 0%,#4C77D6 46%,#64A4FF 100%);-webkit-background-clip:text;background-clip:text;color:transparent;">partenaires</span></h1>
+        <p data-hero-sub data-i18n="h_sub" data-t="large" style="max-width:58ch;margin-top:1.5rem;font-size:clamp(1rem,1.4vw,1.25rem);line-height:1.66;color:#443F43;text-wrap:pretty;">Nous représentons des fabricants de référence en composants pour l’aéronautique, la défense et l’industrie.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;margin-top:2rem;">
+          <a href="Nous contacter.dc.html" data-btn-primary style="position:relative;display:flex;align-items:center;justify-content:center;gap:.5rem;overflow:hidden;padding:.9375rem 1.875rem;font-size:1.0625rem;font-weight:600;text-align:center;color:#FFFFFF;background-color:#003EC5;border-radius:8px;box-shadow:0 6px 16px -6px #003ec599;transition:background-color .25s,box-shadow .25s cubic-bezier(.19,1,.22,1),transform .25s cubic-bezier(.19,1,.22,1);">
+            <span data-i18n="cta_ask" style="position:relative;z-index:2;">Demander une référence</span>
+            <span aria-hidden="true" data-shine-layer style="position:absolute;top:0;bottom:0;left:0;width:44%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.30),transparent);transform:translateX(-130%) skewX(-18deg);"></span>
+          </a>
+          <a href="#reseau" data-btn-secondary style="display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.9375rem 1.875rem;font-size:1.0625rem;font-weight:600;text-align:center;color:#0A0009;background-color:transparent;border:2px solid #0A0009;border-radius:8px;transition:background-color .25s,box-shadow .25s cubic-bezier(.19,1,.22,1),transform .25s cubic-bezier(.19,1,.22,1);">
+            <span data-i18n="cta_see">Voir les 18 fabricants</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:17px;height:17px;"><path d="M12 5v14M19 12l-7 7-7-7"></path></svg>
+          </a>
+        </div>
+      </div>
+
+      <div data-hero-panel style="position:relative;padding:2rem;border:1px solid rgba(0,62,197,0.12);border-radius:24px;background:rgba(255,255,255,0.78);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);box-shadow:0 30px 64px -34px rgba(0,24,78,0.30),0 2px 6px rgba(0,24,78,0.05),inset 0 1px 0 rgba(255,255,255,0.9);">
+        <p data-i18n="panel_k" style="font-size:.8125rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#003EC5;margin-bottom:1.5rem;">Le réseau</p>
+        <div data-meta-row style="display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding:1rem 0;border-top:1px solid rgba(10,0,9,0.09);">
+          <span style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:32px;font-weight:700;line-height:1;color:#003EC5;">18</span>
+          <span data-i18n="n1" data-t="tiny" style="font-size:0.9375rem;font-weight:600;line-height:1.4;text-align:right;color:#443F43;">fabricants représentés</span>
+        </div>
+        <div data-meta-row style="display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding:1rem 0;border-top:1px solid rgba(10,0,9,0.09);">
+          <span style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:32px;font-weight:700;line-height:1;color:#003EC5;">7</span>
+          <span data-i18n="n2" data-t="tiny" style="font-size:0.9375rem;font-weight:600;line-height:1.4;text-align:right;color:#443F43;">familles de composants</span>
+        </div>
+        <div data-meta-row style="display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding:1rem 0;border-top:1px solid rgba(10,0,9,0.09);">
+          <span style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:32px;font-weight:700;line-height:1;color:#003EC5;">1</span>
+          <span data-i18n="n3" data-t="tiny" style="font-size:0.9375rem;font-weight:600;line-height:1.4;text-align:right;color:#443F43;">contrat d’exclusivité</span>
+        </div>
+      </div>
+    </div>
+
+    <div data-ribbon-wrap aria-hidden="true" style="position:relative;margin-top:3rem;padding:1.5rem 0 2rem;border-top:1px solid rgba(10,0,9,0.10);overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);">
+      <div data-ribbon style="display:flex;width:max-content;align-items:center;gap:4rem;animation:lc-ribbon 44s linear infinite;"></div>
+    </div>
+  </div>
+</section>
+
+<section style="position:relative;z-index:2;padding:5rem 5% 0;">
+  <div data-oxley style="position:relative;max-width:1280px;margin:0 auto;border-radius:32px;overflow:hidden;background:linear-gradient(140deg,#003EC5 0%,#00256F 54%,#00184E 100%);box-shadow:0 40px 80px -40px rgba(0,24,78,0.55);">
+    <div aria-hidden="true" style="position:absolute;inset:0;opacity:0.22;background-image:linear-gradient(rgba(255,255,255,0.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.5) 1px,transparent 1px);background-size:88px 88px;mask-image:radial-gradient(70% 84% at 86% 6%,#000,transparent 74%);-webkit-mask-image:radial-gradient(70% 84% at 86% 6%,#000,transparent 74%);"></div>
+    <div aria-hidden="true" style="position:absolute;right:-8%;top:-52%;width:40vw;height:40vw;border-radius:50%;background:radial-gradient(circle,rgba(100,164,255,0.42) 0%,rgba(100,164,255,0) 66%);filter:blur(20px);animation:lc-drift 15s ease-in-out infinite;"></div>
+    <div aria-hidden="true" data-oxley-sheen style="position:absolute;top:0;bottom:0;left:0;width:30%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.14),transparent);opacity:0;pointer-events:none;"></div>
+
+    <div data-oxley-grid style="position:relative;display:grid;grid-template-columns:1fr;gap:3rem;align-items:center;padding:5rem 5%;color:#fff;">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1rem;margin-bottom:1.5rem;border:1.5px solid rgba(255,255,255,0.40);border-radius:999px;background:rgba(255,255,255,0.10);">
+          <span aria-hidden="true" style="display:block;width:6px;height:6px;border-radius:50%;background:#92BFFF;box-shadow:0 0 9px #92BFFF;animation:lc-pulse 2.6s ease-in-out infinite;"></span>
+          <span data-i18n="ox_tag" style="font-size:.8125rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#fff;">Contrat d’exclusivité</span>
+        </div>
+        <h2 data-reveal data-i18n="ox_title" data-h="h2" style="font-size:clamp(2.375rem,3.4vw,4.75rem);text-transform:uppercase;line-height:1.02;max-width:22ch;">Distributeur exclusif OXLEY en France et en Belgique</h2>
+        <p data-reveal data-delay="70" data-i18n="ox_sub" data-t="medium" style="max-width:54ch;margin-top:1rem;font-size:1.125rem;line-height:1.64;color:rgba(255,255,255,0.82);text-wrap:pretty;">L’exclusivité nous engage sur la disponibilité, le support technique de premier niveau et la continuité de la ligne sur toute la durée de vos programmes.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;margin-top:2rem;">
+          <a href="Nous contacter.dc.html" data-btn-alt style="display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.9375rem 1.875rem;font-size:1.0625rem;font-weight:600;text-align:center;color:#0A0009;background-color:#FFFFFF;border:2px solid #FFFFFF;border-radius:8px;transition:color .2s,border-color .2s,background-color .25s,box-shadow .25s;">
+            <span data-i18n="ox_btn1">Consulter sur OXLEY</span>
+          </a>
+          <a href="Nos produits.dc.html" data-btn-sec-alt style="display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.9375rem 1.875rem;font-size:1.0625rem;font-weight:600;text-align:center;color:#FFFFFF;background-color:transparent;border:2px solid #FFFFFF;border-radius:8px;transition:background-color .25s,box-shadow .25s cubic-bezier(.19,1,.22,1),transform .25s cubic-bezier(.19,1,.22,1);">
+            <span data-i18n="ox_btn2">Voir les gammes</span>
+          </a>
+        </div>
+      </div>
+      <div data-reveal data-delay="130" style="position:relative;display:flex;align-items:center;justify-content:center;padding:2rem;border:1px solid rgba(255,255,255,0.24);border-radius:24px;background:rgba(255,255,255,0.08);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);">
+        <img src="assets/partners/0.png" alt="OXLEY" style="width:100%;max-width:220px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.96;" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reseau" style="position:relative;z-index:2;padding:6rem 5%;">
+
+  <div style="position:relative;max-width:1280px;margin:0 auto;">
+    <div data-roster-head style="display:grid;grid-template-columns:1fr;gap:1.5rem;align-items:end;margin-bottom:3rem;">
+      <div style="max-width:54ch;">
+        <p data-reveal data-i18n="s1_idx" style="font-size:.8125rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#003EC5;margin-bottom:1.5rem;">Le réseau</p>
+        <h2 data-reveal data-delay="60" data-i18n="s1_title" data-h="h2" style="font-size:clamp(2.375rem,3.3vw,4.75rem);text-transform:uppercase;line-height:1.03;">Les fabricants que nous représentons</h2>
+      </div>
+      <a href="Nous contacter.dc.html" data-btn-link data-reveal data-delay="120" style="display:inline-flex;align-items:center;gap:.5rem;padding:.25rem 0;font-size:1.0625rem;font-weight:600;line-height:1;color:#0A0009;">
+        <span data-i18n="s1_link">Une référence à sourcer ?</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px;"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </a>
+    </div>
+
+    <div id="lc-grid" data-partners-grid style="position:relative;z-index:2;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;align-items:start;">
+      <sc-for list="{{ partners }}" as="p" hint-placeholder-count="18">
+        <div data-tile data-card="{{ p.i }}" role="button" tabIndex="0" aria-expanded="false" aria-controls="lc-band" aria-label="{{ p.aria }}" onClick="{{ onTileClick }}" onKeyDown="{{ onTileKey }}" style="position:relative;display:flex;flex-direction:column;gap:1rem;padding:1.5rem;border:1px solid rgba(10,0,9,0.08);border-radius:24px;background:rgba(255,255,255,0.74);backdrop-filter:blur(14px) saturate(1.35);-webkit-backdrop-filter:blur(14px) saturate(1.35);overflow:hidden;box-shadow:0 1px 2px rgba(0,24,78,0.04),inset 0 1px 0 rgba(255,255,255,0.85);transition:transform .45s,opacity .4s,filter .4s,backdrop-filter .4s cubic-bezier(.16,1,.3,1),border-color .4s,box-shadow .45s;cursor:pointer;">
+          <span aria-hidden="true" data-tile-sheen style="position:absolute;top:0;bottom:0;left:0;width:36%;background:linear-gradient(90deg,transparent,rgba(0,62,197,0.07),transparent);opacity:0;pointer-events:none;"></span>
+          <span aria-hidden="true" data-tile-num data-t="tiny" style="position:absolute;z-index:4;top:1rem;right:1.5rem;font-size:0.9375rem;font-weight:600;letter-spacing:0.14em;color:rgba(10,0,9,0.22);transition:color .35s;">{{ p.num }}</span>
+          <div style="position:relative;display:flex;align-items:center;justify-content:center;height:5rem;border-radius:24px;background:#F2F2F2;padding:1rem;transition:background-color .4s;" data-tile-plate>
+            <img data-tile-logo src="{{ p.logo }}" alt="{{ p.name }}" loading="lazy" style="max-height:3.25rem;max-width:100%;object-fit:contain;opacity:0.76;transition:opacity .4s,transform .5s cubic-bezier(.16,1,.3,1);" />
+          </div>
+          <p data-tile-name data-t="regular" style="position:relative;font-size:1.0625rem;font-weight:600;color:#0A0009;">{{ p.name }}</p>
+          <sc-if value="{{ p.hasDesc }}" hint-placeholder-val="{{ false }}">
+            <p data-t="regular" style="position:relative;font-size:1.0625rem;line-height:1.55;color:#443F43;text-wrap:pretty;">{{ p.desc }}</p>
+          </sc-if>
+          <div style="position:relative;display:flex;">
+            <span aria-hidden="true" style="flex:1;display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.5rem 1.25rem;font-size:0.9375rem;font-weight:600;text-align:center;color:#0A0009;background-color:transparent;border:2px solid #0A0009;border-radius:8px;">En savoir +</span>
+          </div>
+
+          <!-- Source cachée : la trace clonée dans le bandeau au clic. Reste
+               visible/éditable en édition directe, jamais rendue en preview. -->
+          <div data-detail-source="{{ p.i }}" style="display:none;">
+            <div style="display:inline-flex;align-items:center;gap:.5rem;padding:.3rem .75rem;border-radius:999px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);margin-bottom:.9rem;">
+              <span style="width:6px;height:6px;border-radius:50%;background:#5C8EE0;"></span>
+              <span style="font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:#C9D8FF;">Fabricant partenaire</span>
+            </div>
+            <h2 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:600;font-size:1.75rem;margin:0 0 .65rem;color:#fff;">{{ p.name }}</h2>
+            <sc-if value="{{ p.isOxley }}" hint-placeholder-val="{{ false }}">
+              <p style="font-size:1rem;line-height:1.65;color:#C9D8FF;margin:0 0 1.25rem;max-width:38rem;">Contenu de démonstration — à remplacer par la fiche réelle. Fabricant britannique de composants pour environnements sévères (aéronautique, défense, spatial), distribué en exclusivité en France et en Belgique.</p>
+              <div style="display:flex;gap:.75rem;margin:0 0 1.25rem;max-width:26rem;">
+                <img src="assets/partners/0.png" alt="" style="flex:1;height:5.5rem;object-fit:contain;border-radius:16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);padding:.75rem;" />
+                <img src="assets/partners/1.png" alt="" style="flex:1;height:5.5rem;object-fit:contain;border-radius:16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);padding:.75rem;" />
+              </div>
+              <table style="width:100%;max-width:34rem;border-collapse:collapse;margin:0 0 1.5rem;font-size:.92rem;">
+                <tr><th style="text-align:left;padding:.55rem .75rem;color:#92BFFF;border-bottom:1px solid rgba(255,255,255,0.16);font-weight:600;">Caractéristique</th><th style="text-align:left;padding:.55rem .75rem;color:#92BFFF;border-bottom:1px solid rgba(255,255,255,0.16);font-weight:600;">Valeur (démonstration)</th></tr>
+                <tr><td style="padding:.55rem .75rem;color:#fff;border-bottom:1px solid rgba(255,255,255,0.08);">Plage de température</td><td style="padding:.55rem .75rem;color:#C9D8FF;border-bottom:1px solid rgba(255,255,255,0.08);">−55 °C à +125 °C</td></tr>
+                <tr><td style="padding:.55rem .75rem;color:#fff;">Norme de référence</td><td style="padding:.55rem .75rem;color:#C9D8FF;">À confirmer avec le fabricant</td></tr>
+              </table>
+            </sc-if>
+            <sc-if value="{{ p.isKrummer }}" hint-placeholder-val="{{ false }}">
+              <p style="font-size:1rem;line-height:1.65;color:#C9D8FF;margin:0 0 1rem;max-width:38rem;">Contenu de démonstration — à remplacer par la fiche réelle. Fabricant spécialisé dans les condensateurs pour l'électronique de puissance, structuré en plusieurs familles de produits.</p>
+              <ul style="margin:0 0 1.5rem;padding-left:1.2rem;color:#C9D8FF;font-size:.98rem;line-height:1.7;max-width:34rem;">
+                <li>Condensateurs céramique multicouches (exemple)</li>
+                <li>Condensateurs film (exemple)</li>
+                <li>Solutions sur mesure pour convertisseurs (exemple)</li>
+              </ul>
+            </sc-if>
+            <sc-if value="{{ p.isSouthern }}" hint-placeholder-val="{{ false }}">
+              <p style="font-size:1rem;line-height:1.65;color:#C9D8FF;margin:0 0 1.25rem;max-width:38rem;">Contenu de démonstration — à remplacer par la fiche réelle. Composants micro-ondes, gamme illustrée ci-dessous à titre d'exemple de mise en page.</p>
+              <div style="display:flex;gap:.75rem;margin:0 0 1.25rem;max-width:34rem;flex-wrap:wrap;">
+                <img src="assets/partners/2.png" alt="" style="flex:1;min-width:6rem;height:5rem;object-fit:contain;border-radius:16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);padding:.6rem;" />
+                <img src="assets/partners/3.png" alt="" style="flex:1;min-width:6rem;height:5rem;object-fit:contain;border-radius:16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);padding:.6rem;" />
+                <img src="assets/partners/4.png" alt="" style="flex:1;min-width:6rem;height:5rem;object-fit:contain;border-radius:16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);padding:.6rem;" />
+              </div>
+              <table style="width:100%;max-width:34rem;border-collapse:collapse;margin:0 0 1.5rem;font-size:.92rem;">
+                <tr><th style="text-align:left;padding:.55rem .75rem;color:#92BFFF;border-bottom:1px solid rgba(255,255,255,0.16);font-weight:600;">Série</th><th style="text-align:left;padding:.55rem .75rem;color:#92BFFF;border-bottom:1px solid rgba(255,255,255,0.16);font-weight:600;">Application (démonstration)</th></tr>
+                <tr><td style="padding:.55rem .75rem;color:#fff;border-bottom:1px solid rgba(255,255,255,0.08);">Série A</td><td style="padding:.55rem .75rem;color:#C9D8FF;border-bottom:1px solid rgba(255,255,255,0.08);">Test &amp; mesure</td></tr>
+                <tr><td style="padding:.55rem .75rem;color:#fff;border-bottom:1px solid rgba(255,255,255,0.08);">Série B</td><td style="padding:.55rem .75rem;color:#C9D8FF;border-bottom:1px solid rgba(255,255,255,0.08);">Radar</td></tr>
+                <tr><td style="padding:.55rem .75rem;color:#fff;">Série C</td><td style="padding:.55rem .75rem;color:#C9D8FF;">Communications</td></tr>
+              </table>
+            </sc-if>
+            <sc-if value="{{ p.isDefault }}" hint-placeholder-val="{{ true }}">
+              <p style="font-size:1rem;line-height:1.65;color:#C9D8FF;margin:0 0 1.5rem;max-width:38rem;">{{ p.desc }}</p>
+            </sc-if>
+            <div style="display:flex;gap:1rem;max-width:25rem;">
+              <a href="{{ p.siteHref }}" target="{{ p.siteTarget }}" rel="noopener" style="flex:1;text-align:center;border:1px solid #6D9CE8;color:#DCE8FF;border-radius:999px;padding:.68rem 1rem;text-decoration:none;font-size:.88rem;">{{ p.site }}</a>
+              <a href="Nous contacter.dc.html" style="flex:1;text-align:center;background:#003EC5;color:#fff;border-radius:999px;padding:.68rem 1rem;text-decoration:none;font-size:.88rem;box-shadow:0 10px 24px -10px rgba(0,62,197,0.6);">Faire un devis</a>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+
+      <div id="lc-band" role="region" aria-label="Fiche fabricant" style="grid-column:1 / -1;position:relative;height:0;min-height:0;overflow:hidden;transition:height .5s cubic-bezier(.16,1,.3,1);">
+        <div id="lc-band-inner" style="position:relative;margin-top:1.75rem;overflow:hidden;background:linear-gradient(165deg,#00184E 0%,#001A55 55%,#00184E 100%);border-radius:32px;padding:2.25rem 2.25rem 2rem;box-shadow:0 40px 90px -40px rgba(0,24,78,0.55);opacity:0;transform:translateY(-8px);transition:opacity .3s ease,transform .35s cubic-bezier(.16,1,.3,1);">
+          <div aria-hidden="true" style="position:absolute;right:-14%;top:-46%;width:26rem;height:26rem;border-radius:50%;filter:blur(30px);background:radial-gradient(circle,rgba(100,164,255,.22) 0%,rgba(100,164,255,0) 66%);animation:lc-drift 17s ease-in-out infinite;pointer-events:none;"></div>
+          <div aria-hidden="true" style="position:absolute;inset:0;opacity:.05;mix-blend-mode:screen;pointer-events:none;background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxNjAnIGhlaWdodD0nMTYwJz48ZmlsdGVyIGlkPSdnJz48ZmVUdXJidWxlbmNlIHR5cGU9J2ZyYWN0YWxOb2lzZScgYmFzZUZyZXF1ZW5jeT0nMC45JyBudW1PY3RhdmVzPSczJy8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9JzE2MCcgaGVpZ2h0PScxNjAnIGZpbHRlcj0ndXJsKCNnKScvPjwvc3ZnPg==');"></div>
+          <button id="lc-band-close" aria-label="Fermer la fiche" type="button" style="position:absolute;top:1.15rem;right:1.15rem;width:2.75rem;height:2.75rem;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.22);border-radius:50%;background:rgba(255,255,255,0.14);color:#fff;cursor:pointer;font-size:1.05rem;z-index:2;">✕</button>
+          <div id="lc-band-content" style="position:relative;color:#fff;"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="lc-glow" aria-hidden="true" style="position:absolute;width:26rem;height:14rem;margin:-7rem 0 0 -13rem;border-radius:50%;background:radial-gradient(circle,rgba(0,62,197,0.15) 0%,rgba(0,62,197,0) 70%);pointer-events:none;opacity:0;filter:blur(2px);transition:opacity .55s ease,left .5s cubic-bezier(.16,1,.3,1),top .5s cubic-bezier(.16,1,.3,1);z-index:0;"></div>
+    <div id="lc-arrive" aria-hidden="true" style="position:absolute;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;border:2px solid #003EC5;opacity:0;pointer-events:none;z-index:1;"></div>
+    <div id="lc-beam" aria-hidden="true" style="position:absolute;width:2px;background:linear-gradient(180deg,rgba(0,62,197,0) 0%,#003EC5 60%,#5C8EE0 100%);opacity:0;transition:opacity .3s ease,left .5s cubic-bezier(.16,1,.3,1),height .5s cubic-bezier(.16,1,.3,1);pointer-events:none;z-index:1;"></div>
+    <div id="lc-node" aria-hidden="true" style="position:absolute;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:#5C8EE0;box-shadow:0 0 0 4px rgba(0,62,197,0.18);opacity:0;animation:none;transition:opacity .3s ease,left .5s cubic-bezier(.16,1,.3,1),top .5s cubic-bezier(.16,1,.3,1);pointer-events:none;z-index:1;"></div>
+  </div>
+</section>
+
+<section style="position:relative;z-index:2;padding:0 5% 6rem;">
+  <div style="position:relative;max-width:1280px;margin:0 auto;padding:5rem 5%;border-radius:32px;overflow:hidden;background:linear-gradient(150deg,rgba(228,238,255,0.92),rgba(247,250,255,0.86));backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);border:1px solid rgba(0,62,197,0.12);box-shadow:inset 0 1px 0 rgba(255,255,255,0.9);">
+    <div aria-hidden="true" style="position:absolute;right:-10%;top:-60%;width:38vw;height:38vw;border-radius:50%;background:radial-gradient(circle,rgba(0,62,197,0.14) 0%,rgba(0,62,197,0) 66%);filter:blur(22px);animation:lc-drift 19s ease-in-out infinite;"></div>
+    <div data-cta-grid style="position:relative;display:grid;grid-template-columns:1fr;gap:2rem;align-items:end;">
+      <div>
+        <h2 data-reveal data-i18n="cta_title" data-h="h2" style="font-size:clamp(2.375rem,3.1vw,4.75rem);text-transform:uppercase;line-height:1.03;max-width:22ch;">Vous ne trouvez pas votre fabricant ?</h2>
+        <p data-reveal data-delay="70" data-i18n="cta_sub" data-t="medium" style="max-width:52ch;margin-top:1rem;font-size:1.125rem;line-height:1.64;color:#443F43;text-wrap:pretty;">Notre réseau dépasse les lignes présentées ici. Décrivez votre besoin : nous cherchons la référence et son origine.</p>
+      </div>
+      <div data-reveal data-delay="120" style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;">
+        <a href="Nous contacter.dc.html" data-btn-primary style="position:relative;display:flex;align-items:center;justify-content:center;gap:.5rem;overflow:hidden;padding:.9375rem 1.875rem;font-size:1.0625rem;font-weight:600;text-align:center;color:#FFFFFF;background-color:#003EC5;border-radius:8px;box-shadow:0 6px 16px -6px #003ec599;transition:background-color .25s,box-shadow .25s cubic-bezier(.19,1,.22,1),transform .25s cubic-bezier(.19,1,.22,1);">
+          <span data-i18n="cta_btn1" style="position:relative;z-index:2;">Nous contacter</span>
+          <span aria-hidden="true" data-shine-layer style="position:absolute;top:0;bottom:0;left:0;width:44%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.30),transparent);transform:translateX(-130%) skewX(-18deg);"></span>
+        </a>
+        <a href="Nos produits.dc.html" data-btn-secondary style="display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.9375rem 1.875rem;font-size:1.0625rem;font-weight:600;text-align:center;color:#0A0009;background-color:transparent;border:2px solid #0A0009;border-radius:8px;transition:background-color .25s,box-shadow .25s cubic-bezier(.19,1,.22,1),transform .25s cubic-bezier(.19,1,.22,1);">
+          <span data-i18n="cta_btn2">Voir les gammes</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="position:relative;z-index:2;">
+<dc-import name="Footer" hint-size="100%,420px"></dc-import>
+</div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  constructor(props){
+    super(props);
+    this.rootRef = React.createRef();
+    this.lang = 'fr';
+    this._openId = null;
+    this.state = {};
+  }
+
+  dict(){
+    return {
+      h_eyebrow:['Un réseau mondial','A global network'],
+      h_sub:['Nous représentons des fabricants de référence en composants pour l’aéronautique, la défense et l’industrie.','We represent leading component manufacturers for aerospace, defense and industry.'],
+      cta_ask:['Demander une référence','Request a part'],
+      cta_see:['Voir les 18 fabricants','See all 18 manufacturers'],
+      panel_k:['Le réseau','The network'],
+      n1:['fabricants représentés','manufacturers represented'],
+      n2:['familles de composants','component families'],
+      n3:['contrat d’exclusivité','exclusive agreement'],
+      ox_tag:['Contrat d’exclusivité','Exclusive agreement'],
+      ox_title:['Distributeur exclusif OXLEY en France et en Belgique','Exclusive OXLEY distributor in France and Belgium'],
+      ox_sub:['L’exclusivité nous engage sur la disponibilité, le support technique de premier niveau et la continuité de la ligne sur toute la durée de vos programmes.','Exclusivity commits us to availability, first-line technical support and continuity of the line throughout your programmes.'],
+      ox_btn1:['Consulter sur OXLEY','Enquire about OXLEY'],
+      ox_btn2:['Voir les gammes','View the ranges'],
+      s1_idx:['Le réseau','The network'],
+      s1_title:['Les fabricants que nous représentons','The manufacturers we represent'],
+      s1_link:['Une référence à sourcer ?','A part to source?'],
+      cta_title:['Vous ne trouvez pas votre fabricant ?','Can’t find your manufacturer?'],
+      cta_sub:['Notre réseau dépasse les lignes présentées ici. Décrivez votre besoin : nous cherchons la référence et son origine.','Our network goes beyond the lines shown here. Describe your requirement: we will find the part and its origin.'],
+      cta_btn1:['Nous contacter','Contact us'],
+      cta_btn2:['Voir les gammes','View the ranges']
+    };
+  }
+
+  /* ==================================================================
+     LES 18 PARTENAIRES — À COMPLÉTER PAR LC ELECTRONIC
+     Seuls les NOMS sont vérifiés (relevés sur les logos de assets/partners/).
+     fr, en et url sont VIDES à dessein : ne pas les remplir par déduction
+     du nom du fabricant — affirmer la gamme d'un tiers sans source est un
+     risque commercial. Reprends les fiches fabricant ou tes contrats.
+     ================================================================== */
+  roster(){
+    return [
+      {name:'OXLEY',                      url:'', fr:'Ligne distribuée en exclusivité en France et en Belgique.', en:'Line distributed exclusively in France and Belgium.', detailKind:'oxley'},
+      {name:'Holland Shielding Systems',  url:'', fr:'', en:''},
+      {name:'Electronic Concepts',        url:'', fr:'', en:''},
+      {name:'Krummer Kondensatoren',      url:'', fr:'', en:'', detailKind:'krummer'},
+      {name:'Johanson Dielectrics',       url:'', fr:'', en:''},
+      {name:'Johanson Technology',        url:'', fr:'', en:''},
+      {name:'Electro Technik',            url:'', fr:'', en:''},
+      {name:'Hytronics Corporation',      url:'', fr:'', en:''},
+      {name:'HVMEG',                      url:'', fr:'', en:''},
+      {name:'i-tech',                     url:'', fr:'', en:''},
+      {name:'Nova Microwave',             url:'', fr:'', en:''},
+      {name:'Precision Resistor Company', url:'', fr:'', en:''},
+      {name:'Res-Net Microwave',          url:'', fr:'', en:''},
+      {name:'RF Techniques',              url:'', fr:'', en:''},
+      {name:'Southern Microwave',         url:'', fr:'', en:'', detailKind:'southern'},
+      {name:'Star Microwave',             url:'', fr:'', en:''},
+      {name:'Tepro',                      url:'', fr:'', en:''},
+      {name:'Winatic Corp',               url:'', fr:'', en:''}
+    ];
+  }
+
+  getPartners(){
+    const fr = this.lang === 'fr';
+    return this.roster().map((p, i) => {
+      const desc = (fr ? p.fr : p.en) || '';
+      const url = p.url || '';
+      return {
+        i:i,
+        num:('0' + (i + 1)).slice(-2),
+        logo:'assets/partners/' + i + '.png',
+        name:p.name,
+        desc:desc,
+        hasDesc:!!desc,
+        detailKind:p.detailKind || 'default',
+        isOxley:p.detailKind === 'oxley',
+        isKrummer:p.detailKind === 'krummer',
+        isSouthern:p.detailKind === 'southern',
+        isDefault:!p.detailKind,
+        /* href="#" + target="_blank" ouvrirait un onglet BLANC : tant que
+           l'URL n'existe pas, le bouton n'est pas rendu du tout. */
+        hasUrl:!!url,
+        /* Le bouton « Site web » est TOUJOURS présent, pour que les 18 cartes
+           aient la même paire d'actions. Sans URL il est rendu inerte (un
+           <span>, pas un <a>) : un href="#" avec target="_blank" ouvrirait un
+           onglet blanc, ce qui est pire qu'un bouton visiblement en attente.
+           Renseigne `url` dans roster() et il devient un vrai lien. */
+        noUrl:!url,
+        url:url,
+        /* Toujours un vrai lien, jamais grisé : sans URL connue, il mène
+           à la page contact plutôt que de rester inerte. */
+        siteHref:url || 'Nous contacter.dc.html',
+        siteTarget:url ? '_blank' : '_self',
+        /* Sans URL, le second bouton est un `button` plein (style guide) qui
+           mène à la page contact : une action réelle plutôt qu'un lien mort. */
+        ask:fr ? 'Demander' : 'Enquire',
+        aria:(fr ? 'En savoir plus sur ' : 'Learn more about ') + p.name,
+        more:fr ? 'En savoir +' : 'Learn more',
+        site:fr ? 'Site web ↗' : 'Website ↗'
+      };
+    });
+  }
+
+  applyLang(lang){
+    const root = this.rootRef.current; if(!root) return;
+    const d = this.dict(); const i = lang === 'fr' ? 0 : 1;
+    root.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.getAttribute('data-i18n');
+      if(d[k]) el.textContent = d[k][i];
+    });
+  }
+
+  /* Bandeau défilant : les 18 logos en boucle. La liste est écrite DEUX fois
+     et l'animation translate de -50% — la seconde moitié prend la place de la
+     première au moment du saut, donc la boucle est invisible. */
+  buildRibbon(){
+    const root = this.rootRef.current; if(!root) return;
+    const rib = root.querySelector('[data-ribbon]');
+    if(!rib || rib._built) return;
+    rib._built = true;
+    const names = this.roster();
+    let html = '';
+    for(let pass = 0; pass < 2; pass++){
+      names.forEach((p, i) => {
+        html += '<img src="assets/partners/' + i + '.png" alt="" '
+             + 'style="height:30px;width:auto;max-width:none;object-fit:contain;'
+             + 'opacity:0.34;filter:grayscale(1);flex:0 0 auto;" />';
+      });
+    }
+    rib.innerHTML = html;
+  }
+
+  /* Tuiles : la carte se relève, la plaque du logo prend une teinte cobalt,
+     le logo passe à pleine opacité et grandit légèrement, et un balayage
+     lumineux traverse — le même geste que le shine des boutons du site. */
+  initTiles(){
+    const root = this.rootRef.current; if(!root) return;
+    root.querySelectorAll('[data-tile]').forEach(tile => {
+      if(tile._wired) return;
+      tile._wired = true;
+      const logo = tile.querySelector('[data-tile-logo]');
+      const plate = tile.querySelector('[data-tile-plate]');
+      const num = tile.querySelector('[data-tile-num]');
+      const sheen = tile.querySelector('[data-tile-sheen]');
+      tile.addEventListener('mouseenter', () => {
+        tile.style.transform = 'translateY(-5px)';
+        tile.style.borderColor = 'rgba(0,62,197,0.26)';
+        tile.style.background = 'rgba(255,255,255,0.92)';
+        tile.style.boxShadow = '0 24px 48px -24px rgba(0,24,78,0.32),inset 0 1px 0 rgba(255,255,255,0.95)';
+        if(plate) plate.style.backgroundColor = '#E4EEFF';
+        if(logo){ logo.style.opacity = '1'; logo.style.transform = 'scale(1.04)'; }
+        if(num) num.style.color = '#003EC5';
+        if(sheen){
+          sheen.style.opacity = '1';
+          sheen.style.animation = 'none';
+          void sheen.offsetWidth;
+          sheen.style.animation = 'lc-shine 1.15s cubic-bezier(.16,1,.3,1)';
+        }
+      });
+      tile.addEventListener('mouseleave', () => {
+        tile.style.transform = 'none';
+        tile.style.borderColor = 'rgba(10,0,9,0.08)';
+        tile.style.background = 'rgba(255,255,255,0.74)';
+        tile.style.boxShadow = '0 1px 2px rgba(0,24,78,0.04),inset 0 1px 0 rgba(255,255,255,0.85)';
+        if(plate) plate.style.backgroundColor = '#F2F2F2';
+        if(logo){ logo.style.opacity = '0.76'; logo.style.transform = 'none'; }
+        if(num) num.style.color = 'rgba(10,0,9,0.22)';
+        if(sheen) sheen.style.opacity = '0';
+      });
+    });
+  }
+
+  /* Tous les états de survol reprennent les VALEURS EXACTES du style guide,
+     relevées dans l'export : .button, .button.is-secondary, .button.is-text
+     .is-outline, .button.is-alternate, .button.is-link. */
+  initButtons(){
+    const root = this.rootRef.current; if(!root) return;
+    const wire = (sel, on, off, down) => {
+      root.querySelectorAll(sel).forEach(el => {
+        if(el._wired) return; el._wired = true;
+        el.addEventListener('mouseenter', () => on(el));
+        el.addEventListener('mouseleave', () => off(el));
+        if(down){
+          el.addEventListener('mousedown', () => down(el));
+          el.addEventListener('mouseup', () => on(el));
+        }
+      });
+    };
+
+    // .button — plein cobalt + le shine du footer custom code
+    wire('[data-btn-primary]', el => {
+      el.style.backgroundColor = '#00319D';
+      el.style.transform = 'scale(1.015) translate(0,-3px)';
+      el.style.boxShadow = '0 14px 28px -10px #003ec58c';
+      const layer = el.querySelector('[data-shine-layer]');
+      if(layer){ layer.style.animation = 'none'; void layer.offsetWidth; layer.style.animation = 'lc-shine 1.05s cubic-bezier(.16,1,.3,1)'; }
+    }, el => {
+      el.style.backgroundColor = '#003EC5';
+      el.style.transform = 'none';
+      el.style.boxShadow = '0 6px 16px -6px #003ec599';
+    }, el => {
+      el.style.transform = 'scale(.99) translate(0,-1px)';
+      el.style.boxShadow = '0 6px 14px -8px #003ec573';
+    });
+
+    // .button.is-secondary — fond neutral-darkest-5, translateY(-2px)
+    wire('[data-btn-secondary]', el => {
+      el.style.backgroundColor = 'rgba(10,0,9,0.05)';
+      el.style.transform = 'translate(0,-2px)';
+      el.style.boxShadow = '0 10px 30px -10px rgba(0,0,0,0.5)';
+    }, el => {
+      el.style.backgroundColor = 'transparent';
+      el.style.transform = 'none';
+      el.style.boxShadow = 'none';
+    });
+
+    // .button.is-text.is-outline — le cobalt se remplit légèrement
+    wire('[data-btn-site]', el => {
+      el.style.backgroundColor = 'rgba(0,62,197,0.07)';
+      el.style.transform = 'translate(0,-2px)';
+      el.style.boxShadow = '0 10px 26px -12px rgba(0,62,197,0.45)';
+    }, el => {
+      el.style.backgroundColor = 'transparent';
+      el.style.transform = 'none';
+      el.style.boxShadow = 'none';
+    });
+
+    // .button.is-alternate — blanc qui bascule en cobalt au survol
+    wire('[data-btn-alt]', el => {
+      el.style.backgroundColor = '#003EC5';
+      el.style.borderColor = '#003EC5';
+      el.style.color = '#FFFFFF';
+      el.style.boxShadow = '2px 2px 10px 2px #003ec58f';
+    }, el => {
+      el.style.backgroundColor = '#FFFFFF';
+      el.style.borderColor = '#FFFFFF';
+      el.style.color = '#0A0009';
+      el.style.boxShadow = 'none';
+    });
+
+    // .button.is-secondary.is-alternate — fond white-10
+    wire('[data-btn-sec-alt]', el => {
+      el.style.backgroundColor = 'rgba(255,255,255,0.10)';
+      el.style.transform = 'translate(0,-2px)';
+      el.style.boxShadow = '0 10px 30px -10px rgba(0,0,0,0.5)';
+    }, el => {
+      el.style.backgroundColor = 'transparent';
+      el.style.transform = 'none';
+      el.style.boxShadow = 'none';
+    });
+
+    // .button.is-link — souligné au survol
+    wire('[data-btn-link]', el => { el.style.textDecoration = 'underline'; },
+                            el => { el.style.textDecoration = 'none'; });
+
+    const bandClose = root.querySelector('#lc-band-close');
+    if(bandClose && !bandClose._wiredHover){
+      bandClose._wiredHover = true;
+      bandClose.addEventListener('mouseenter', () => { bandClose.style.backgroundColor = 'rgba(255,255,255,0.26)'; });
+      bandClose.addEventListener('mouseleave', () => { bandClose.style.backgroundColor = 'rgba(255,255,255,0.14)'; });
+    }
+
+    const ox = root.querySelector('[data-oxley]');
+    const sheen = ox ? ox.querySelector('[data-oxley-sheen]') : null;
+    if(ox && sheen && !ox._wired){
+      ox._wired = true;
+      ox.addEventListener('mouseenter', () => {
+        sheen.style.opacity = '1';
+        sheen.style.animation = 'none';
+        void sheen.offsetWidth;
+        sheen.style.animation = 'lc-shine 1.35s cubic-bezier(.16,1,.3,1)';
+      });
+      ox.addEventListener('mouseleave', () => { sheen.style.opacity = '0'; });
+    }
+  }
+
+  /* Halo qui suit le curseur, en fond fixe. Un seul transform écrit par
+     frame via requestAnimationFrame : un mousemove tire jusqu'à 120
+     évènements par seconde, un repaint par frame suffit. */
+  initCursorGlow(){
+    const root = this.rootRef.current; if(!root) return;
+    const glow = root.querySelector('[data-cursor-glow]');
+    if(!glow || this.reduced) return;
+    let x = 0, y = 0, tx = 0, ty = 0, frame = null, shown = false;
+    const loop = () => {
+      // interpolation : le halo rattrape le curseur avec de l'inertie
+      x += (tx - x) * 0.06;
+      y += (ty - y) * 0.06;
+      glow.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0)';
+      frame = Math.abs(tx - x) > 0.4 || Math.abs(ty - y) > 0.4 ? requestAnimationFrame(loop) : null;
+    };
+    this._onMove = (e) => {
+      tx = e.clientX; ty = e.clientY;
+      if(!shown){ shown = true; glow.style.opacity = '1'; x = tx; y = ty; }
+      if(!frame) frame = requestAnimationFrame(loop);
+    };
+    window.addEventListener('mousemove', this._onMove, {passive:true});
+  }
+
+  applyResponsive(){
+    const root = this.rootRef.current; if(!root) return;
+    const w = window.innerWidth;
+    const set = (sel, cols) => root.querySelectorAll(sel).forEach(e => { e.style.gridTemplateColumns = cols; });
+    set('[data-hero-grid]',  w >= 1000 ? '1.3fr 0.7fr' : '1fr');
+    set('[data-oxley-grid]', w >= 1000 ? '1.45fr 0.55fr' : '1fr');
+    set('[data-cta-grid]',   w >= 1000 ? '1.2fr 0.8fr' : '1fr');
+    set('[data-roster-head]', w >= 860 ? '1fr auto' : '1fr');
+  }
+
+  /* Entrée : TRANSFORM uniquement, jamais l'opacité — une transition
+     d'opacité partant de 0 ne s'achève pas si le document est masqué
+     (onglet en arrière-plan, impression, capture) et le contenu resterait
+     invisible. Filet de sécurité à 2 s. */
+  intro(){
+    const root = this.rootRef.current; if(!root) return;
+    const seq = [['[data-hero-tag]',0,16],['[data-hero-title]',80,24],['[data-hero-sub]',190,20],['[data-hero-panel]',280,24]];
+    seq.forEach(([sel, delay, dy]) => {
+      const el = root.querySelector(sel); if(!el) return;
+      el.style.transform = 'translateY(' + dy + 'px)';
+      setTimeout(() => {
+        el.style.transition = 'transform 1s cubic-bezier(.16,1,.3,1)';
+        el.style.transform = 'none';
+      }, delay + 60);
+    });
+    root.querySelectorAll('[data-meta-row]').forEach((r, i) => {
+      r.style.transform = 'translateX(10px)';
+      setTimeout(() => {
+        r.style.transition = 'transform .7s cubic-bezier(.16,1,.3,1)';
+        r.style.transform = 'none';
+      }, 480 + i * 80);
+    });
+    setTimeout(() => {
+      seq.forEach(([sel]) => { const el = root.querySelector(sel); if(el) el.style.transform = 'none'; });
+      root.querySelectorAll('[data-meta-row]').forEach(r => { r.style.transform = 'none'; });
+    }, 2000);
+  }
+
+  /* ==================================================================
+     BANDEAU — un seul panneau sous la grille, rempli en clonant la
+     source cachée de la carte cliquée (innerHTML, jamais de contenu
+     dupliqué en JS). Piloté en impératif comme le reste du fichier
+     (initTiles, initButtons), pas par l'état React : la hauteur du
+     bandeau doit suivre le innerHTML réel après clonage, ce qu'un
+     re-rendu contrôlé par le state ferait à contretemps.
+     ================================================================== */
+  bandEls(){
+    const root = this.rootRef.current;
+    const grid = root.querySelector('#lc-grid');
+    return {
+      stage: grid.parentElement,
+      grid: grid,
+      band: root.querySelector('#lc-band'),
+      inner: root.querySelector('#lc-band-inner'),
+      content: root.querySelector('#lc-band-content'),
+      beam: root.querySelector('#lc-beam'),
+      node: root.querySelector('#lc-node'),
+      glow: root.querySelector('#lc-glow'),
+      arrive: root.querySelector('#lc-arrive')
+    };
+  }
+
+  /* Déplace le vrai nœud #lc-band dans le DOM, juste après la DERNIÈRE
+     carte de la ligne du clic — pas après la carte elle-même : sinon la
+     ligne reste incomplète (des cartes suivantes coincées à sa droite) et
+     le bandeau ne couvre pas toute la largeur au bon endroit. grid-column:
+     1/-1 lui fait ensuite prendre toute la largeur sur sa propre ligne,
+     et le reste des cartes reprend naturellement en dessous. */
+  moveBandToRow(cardEl){
+    const { grid, band } = this.bandEls();
+    const tiles = Array.from(grid.querySelectorAll('[data-tile]'));
+    const cols = getComputedStyle(grid).gridTemplateColumns.split(' ').length || 1;
+    const idx = tiles.indexOf(cardEl);
+    if(idx === -1) return;
+    const row = Math.floor(idx / cols);
+    const lastInRow = Math.min(tiles.length - 1, row * cols + cols - 1);
+    const ref = tiles[lastInRow];
+    if(ref.nextSibling !== band) ref.after(band);
+  }
+
+  positionBeam(cardEl){
+    const { stage, beam, node, glow, arrive, band } = this.bandEls();
+    const stageRect = stage.getBoundingClientRect();
+    const cardRect = cardEl.getBoundingClientRect();
+    const bandRect = band.getBoundingClientRect();
+    const cx = cardRect.left + cardRect.width / 2 - stageRect.left;
+    const beamTop = cardRect.bottom - stageRect.top;
+    const beamBottom = Math.max(beamTop + 12, bandRect.top - stageRect.top);
+    beam.style.left = (cx - 1) + 'px'; beam.style.top = beamTop + 'px'; beam.style.height = (beamBottom - beamTop) + 'px';
+    node.style.left = cx + 'px'; node.style.top = beamBottom + 'px';
+    glow.style.left = cx + 'px'; glow.style.top = beamTop + 'px';
+    arrive.style.left = cx + 'px'; arrive.style.top = beamTop + 'px';
+  }
+
+  arrivalPulse(){
+    if(this.reduced) return;
+    const { arrive } = this.bandEls();
+    arrive.getAnimations().forEach(a => a.cancel());
+    arrive.animate([{ transform:'scale(.4)', opacity:.7 }, { transform:'scale(2.6)', opacity:0 }], { duration:600, easing:'cubic-bezier(.16,1,.3,1)' });
+  }
+
+  /* Plafonnée : un fabricant très riche (images, tableau) ne doit pas
+     repousser toute la page sans limite — la limite vit déjà en CSS
+     (max-height + overflow-y sur #lc-band-inner), ici on dimensionne
+     juste le CONTENEUR extérieur sur le plus petit des deux. */
+  /* Bug de moteur trouvé en testant : #lc-band est un item de grille avec
+     grid-column:1/-1 (toute la largeur). Une hauteur inline seule n'est PAS
+     comptée pour dimensionner sa ligne "auto" — la ligne de grille reste à
+     0px même quand band.style.height vaut "351px" (vérifié : height=351px,
+     getComputedStyle().height=0px, ligne de grille=0px). min-height, elle,
+     est prise en compte pour ce calcul. D'où les deux, jamais un seul. */
+  sizeBand(){
+    const { band, inner } = this.bandEls();
+    const h = inner.scrollHeight + 28 + 'px';
+    band.style.height = h;
+    band.style.minHeight = h;
+  }
+
+  setActiveCard(id){
+    const root = this.rootRef.current;
+    root.querySelectorAll('[data-tile]').forEach(c => {
+      const active = c.getAttribute('data-card') === String(id);
+      c.setAttribute('aria-expanded', active ? 'true' : 'false');
+      c.style.borderColor = active ? '#003EC5' : 'rgba(10,0,9,0.08)';
+      c.style.boxShadow = active ? '0 16px 34px -16px rgba(0,62,197,0.28)' : '0 1px 2px rgba(0,24,78,0.04),inset 0 1px 0 rgba(255,255,255,0.85)';
+      if(id === null){
+        c.style.transform = 'none'; c.style.opacity = '1'; c.style.filter = 'none';
+      } else {
+        c.style.transform = active ? 'translateY(-5px)' : 'scale(.985)';
+        c.style.opacity = active ? '1' : '.55';
+        c.style.filter = active ? 'none' : 'saturate(.6)';
+      }
+    });
+  }
+
+  fillBand(id){
+    const root = this.rootRef.current;
+    const source = root.querySelector('[data-detail-source="' + id + '"]');
+    const { content } = this.bandEls();
+    content.innerHTML = source ? source.innerHTML : '';
+  }
+
+  showBandContent(){
+    const { inner } = this.bandEls();
+    inner.style.opacity = '1'; inner.style.transform = 'none';
+  }
+  hideBandContent(){
+    const { inner } = this.bandEls();
+    inner.style.opacity = '0'; inner.style.transform = 'translateY(-8px)';
+  }
+
+  closeBand(){
+    const { band, beam, node, glow } = this.bandEls();
+    band.style.height = '0px';
+    band.style.minHeight = '0px';
+    this.hideBandContent();
+    beam.style.opacity = '0'; node.style.opacity = '0'; node.style.animation = 'none';
+    glow.style.opacity = '0';
+    this.setActiveCard(null);
+    this._openId = null;
+  }
+
+  onTileClick = (e) => {
+    if(e.target.closest('[data-btn-site],[data-btn-primary]')) return;
+    const tile = e.currentTarget;
+    const id = tile.getAttribute('data-card');
+    if(this._openId === id){ this.closeBand(); return; }
+
+    this.setActiveCard(id);
+    this.moveBandToRow(tile);
+    const { beam, node, glow } = this.bandEls();
+    beam.style.opacity = '1'; node.style.opacity = '1'; glow.style.opacity = '1';
+    if(!this.reduced) node.style.animation = 'lc-pulse 1.8s ease-in-out infinite';
+    this.positionBeam(tile);
+    this.arrivalPulse();
+
+    if(this._openId == null){
+      this.fillBand(id);
+      requestAnimationFrame(() => { this.sizeBand(); setTimeout(() => this.showBandContent(), this.reduced ? 0 : 90); });
+    } else {
+      this.hideBandContent();
+      setTimeout(() => { this.fillBand(id); this.sizeBand(); this.showBandContent(); }, this.reduced ? 0 : 160);
+    }
+    this._openId = id;
+  };
+
+  /* Le rôle "button" posé sur la carte n'a pas le comportement natif d'un
+     <button> — Entrée ET Espace doivent être câblés à la main, sinon le
+     clavier n'atteint jamais cette action. */
+  onTileKey = (e) => {
+    if(e.key !== 'Enter' && e.key !== ' ') return;
+    e.preventDefault();
+    this.onTileClick(e);
+  };
+
+  stopBubble = (e) => { e.stopPropagation(); };
+
+  componentDidMount(){
+    this.reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    import('./site.js').then(m => {
+      this.lang = m.getLang();
+      this.applyLang(this.lang);
+      this.forceUpdate();
+      this._off = m.onLang(l => {
+        this.lang = l; this.forceUpdate();
+        setTimeout(() => { this.applyLang(l); this.initTiles(); this.initButtons(); }, 40);
+      });
+      this._offReveal = m.initReveal(this.rootRef.current);
+    }).catch(() => { this.applyLang(this.lang); });
+
+    const closeBtn = this.rootRef.current.querySelector('#lc-band-close');
+    if(closeBtn && !closeBtn._wiredClose){ closeBtn._wiredClose = true; closeBtn.addEventListener('click', () => this.closeBand()); }
+    this._onKey = (e) => { if(e.key === 'Escape' && this._openId != null) this.closeBand(); };
+    document.addEventListener('keydown', this._onKey);
+
+    /* Ferme sur un clic hors zone interactive — dans le bandeau (son fond,
+       son texte) OU en dehors de lui ET en dehors de toute carte (les cartes
+       gèrent déjà leur propre clic via onTileClick, donc on les ignore ici
+       pour ne pas doubler la logique d'ouverture/fermeture). */
+    this._onOutsideClick = (e) => {
+      if(this._openId == null) return;
+      const band = this.rootRef.current.querySelector('#lc-band');
+      /* Protégé = tout ce qui porte du contenu réel (texte, image, tableau,
+         liste) ou une action (lien, bouton) — cliquer LÀ ne doit jamais
+         fermer. Seul le fond décoratif du bandeau, en dehors de ces
+         éléments, ferme au clic. */
+      const isProtected = !!e.target.closest('p,h2,h3,h4,img,table,td,th,tr,ul,li,a,button,input,textarea,select,[contenteditable]');
+      if(isProtected) return;
+      if(band.contains(e.target)){ this.closeBand(); return; }
+      if(e.target.closest('[data-tile]')) return;
+      this.closeBand();
+    };
+    document.addEventListener('click', this._onOutsideClick);
+    this._onBandResize = () => {
+      if(this._openId == null) return;
+      const tile = this.rootRef.current.querySelector('[data-tile][data-card="' + this._openId + '"]');
+      if(tile) this.positionBeam(tile);
+      this.sizeBand();
+    };
+    window.addEventListener('resize', this._onBandResize, {passive:true});
+
+    this.applyResponsive();
+    this._onResize = () => this.applyResponsive();
+    window.addEventListener('resize', this._onResize, {passive:true});
+
+    this.buildRibbon();
+    this.initCursorGlow();
+    this.initTiles();
+    this.initButtons();
+    if(!this.reduced) this.intro();
+  }
+
+  componentDidUpdate(){ this.buildRibbon(); this.initTiles(); this.initButtons(); }
+
+  componentWillUnmount(){
+    if(this._onKey) document.removeEventListener('keydown', this._onKey);
+    if(this._onOutsideClick) document.removeEventListener('click', this._onOutsideClick);
+    if(this._onResize) window.removeEventListener('resize', this._onResize);
+    if(this._onBandResize) window.removeEventListener('resize', this._onBandResize);
+    if(this._onMove) window.removeEventListener('mousemove', this._onMove);
+    if(this._offReveal) this._offReveal();
+    if(this._off) this._off();
+  }
+
+  renderVals(){
+    return {
+      rootRef:this.rootRef,
+      partners:this.getPartners(),
+      onTileClick:this.onTileClick,
+      onTileKey:this.onTileKey,
+      stopBubble:this.stopBubble
+    };
+  }
+}
+
+</script>
+</body>
+</html>
